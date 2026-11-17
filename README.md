@@ -115,7 +115,6 @@ yolo detect predict model=best.pt source=test.jpg
 yolo detect predict model=best.pt source=video.mp4
 ```
 
-Replace `best.pt`, `test.jpg`, and `video.mp4` with the correct paths to your model and input files.
 
 ## 📊 Key Features
 
@@ -125,16 +124,6 @@ Replace `best.pt`, `test.jpg`, and `video.mp4` with the correct paths to your mo
 - Video-based pothole detection.
 - Bounding box visualization.
 - Detection result generation.
-
-## 📸 Results
-
-Add your actual pothole detection screenshots here.
-
-Example:
-
-```markdown
-![Pothole Detection Result](media/sample_result.jpg)
-```
 
 ## 🔮 Future Enhancements
 
