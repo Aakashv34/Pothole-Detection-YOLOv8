@@ -1,0 +1,17 @@
+# Large demo video
+/Pothole_Detection_1.mp4
+
+# Training outputs
+runs/
+
+# Generated detection images
+media/detections/
+media/uploads/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.venv/

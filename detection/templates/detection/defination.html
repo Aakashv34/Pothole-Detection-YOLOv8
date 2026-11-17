@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Pothole Definition{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1 class="display-4">Welcome!</h1>
+    <p class="lead mt-3">
+        A pothole is a depression or hole in a road surface caused by wear, weather conditions, and the gradual breakdown of materials, often leading to unsafe driving conditions.
+    </p>
+    <div class="d-flex justify-content-center mt-4">
+        <a href="{% url 'upload_image' %}" class="btn btn-primary mx-2">Upload Image</a>
+        <a href="{% url 'history' %}" class="btn btn-secondary mx-2">View History</a>
+        <a href="{% url 'logout' %}" class="btn btn-danger mx-2">Logout</a>
+    </div>
+</div>
+{% endblock %}

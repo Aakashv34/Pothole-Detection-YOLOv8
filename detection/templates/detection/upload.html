@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Image for Pothole Detection{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Header Section -->
+    <div class="text-center mb-4">
+        <h1 class="display-4 font-weight-bold text-primary">Upload Image for Detection</h1>
+        <p class="lead text-muted">
+            Upload an image of the road, and our AI-powered system will detect potholes to help improve road safety.
+        </p>
+    </div>
+
+    <!-- Upload Form Section -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data" class="p-3">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_image" class="font-weight-bold text-secondary">
+                                <i class="fas fa-upload mr-2"></i>Choose an Image
+                            </label>
+                            <input 
+                                type="file" 
+                                name="image" 
+                                id="id_image" 
+                                class="form-control-file" 
+                                accept="image/*" 
+                                required
+                            >
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-search mr-2"></i>Upload and Detect
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Info Section -->
+    <div class="text-center mt-5">
+        <p class="text-muted">Ensure the image clearly shows the road surface for accurate detection results.</p>
+        <p class="text-secondary">
+            Need help? Visit our <a href="#" class="text-primary">Support Page</a>.
+        </p>
+    </div>
+</div>
+{% endblock %}

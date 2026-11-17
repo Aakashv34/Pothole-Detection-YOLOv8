@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Detection History{% endblock %}
+
+{% block content %}
+<h1>Detection History</h1>
+<table border="1">
+    <tr>
+        <th>Image</th>
+        <th>Result</th>
+        <th>Confidence</th>
+        <th>Timestamp</th>
+    </tr>
+    {% for detection in history %}
+    <tr>
+        <td><img src="{{ detection.image.url }}" alt="Detection Image" width="100"></td>
+        <td>{{ detection.result }}</td>
+        <td>{{ detection.confidence|floatformat:2 }}</td>
+        <td>{{ detection.detected_at }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">No detection history available.</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

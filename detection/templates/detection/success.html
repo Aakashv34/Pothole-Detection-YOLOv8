@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Detection Result{% endblock %}
+
+{% block content %}
+<h1>Detection Result</h1>
+
+{% if detection_image %}
+    <h3>Number of Potholes Detected: {{ box_count }}</h3>
+    <img src="{{ detection_image }}" alt="Pothole Detection Result">
+    <p><strong>Confidence:</strong> {{ confidence|floatformat:1 }}%</p> 
+
+    {% if box_count == 0 %}
+        <p class="message">Great! No potholes detected on the road</p>
+        <script>
+            let message = "Great! No potholes detected on the road";
+        </script>
+    {% elif box_count == 1 %}
+        <p class="message">Caution! 1 pothole detected. Watch out for uneven surfaces.</p>
+        <script>
+            let message = "Caution! 1 pothole detected. Watch out for uneven surfaces.";
+        </script>
+    {% elif box_count >= 2 and box_count <= 5 %}
+        <p class="message">Attention! {{ box_count }} potholes detected. Drive with extra care.</p>
+        <script>
+            let message = "Attention! {{ box_count }} potholes detected. Drive with extra care.";
+        </script>
+    {% elif box_count >= 6 and box_count <= 8 %}
+        <p class="message">Warning! {{ box_count }} potholes detected. Slow down and drive carefully to avoid damage.</p>
+        <script>
+            let message = "Warning! {{ box_count }} potholes detected. Slow down and drive carefully to avoid damage.";
+        </script>
+    {% elif box_count > 8 %}
+        <p class="message"></p>Critical Alert! {{ box_count }} potholes detected. The road is in poor condition. Proceed with extreme caution.
+        <script>
+            let message = "Critical Alert! {{ box_count }} potholes detected. The road is in poor condition. Proceed with extreme caution.";
+        </script>
+    {% endif %}
+{% else %}
+    <p>No detected image available. Please check your configuration.</p>
+{% endif %}
+
+<a href="{% url 'upload_image' %}">Upload Another Image</a>
+
+<script>
+    // Voice Notification Code
+    if (typeof message !== "undefined" && message) {
+        let synth = window.speechSynthesis;
+        let utterance = new SpeechSynthesisUtterance(message);
+        utterance.lang = "en-US"; // Set language
+        synth.speak(utterance);
+    }
+</script>
+
+{% endblock %}
